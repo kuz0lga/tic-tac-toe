@@ -22,8 +22,14 @@ board.addEventListener('click', (event) => {
         x++;
         
         if (x + o < 9) {
-            setTimeout(addNull, 1000)
+            let timerId = setTimeout(addNull, 1000)
             o++;
+            choosingWinner()
+            boxes.forEach(item => {
+                if(item.classList.contains('red')) {
+                    clearTimeout(timerId);  
+                }
+            })
             
         } else {
             choosingWinner()
@@ -60,42 +66,39 @@ function getRandomnumber() {
     return boxes[index]
 }
 
-//функция выбора победителя НЕ ПОЛУЧАЕТСЯ!!!!!!
-function choosingWinner() {
-    console.log(boxes)
-    if (boxes[0].innerHTML === boxes[1].innerHTML && boxes[1].innerHTML === boxes[2].innerHTML && boxes[0].innerHTML === boxes[2].innerHTML) {
+//функция выбора победителя
+function choosingWinner() {    
+    if (boxes[0].innerHTML === boxes[1].innerHTML && boxes[1].innerHTML === boxes[2].innerHTML && boxes[0].innerHTML === boxes[2].innerHTML && boxes[0].innerHTML !== '' && boxes[1].innerHTML !== '' && boxes[2].innerHTML !== '') {
         boxes[0].classList.add('red')
         boxes[1].classList.add('red')
         boxes[2].classList.add('red')
-    } else if (boxes[3].innerHTML === boxes[4].innerHTML && boxes[4].innerHTML === boxes[5].innerHTML && boxes[3].innerHTML === boxes[5].innerHTML) {
+    } else if (boxes[3].innerHTML === boxes[4].innerHTML && boxes[4].innerHTML === boxes[5].innerHTML && boxes[3].innerHTML === boxes[5].innerHTML && boxes[3].innerHTML !== '' && boxes[4].innerHTML !== '' && boxes[5].innerHTML !== '') {
         boxes[3].classList.add('red')
         boxes[4].classList.add('red')
         boxes[5].classList.add('red')
-    } else if (boxes[6].innerHTML === boxes[7].innerHTML && boxes[7].innerHTML === boxes[8].innerHTML && boxes[6].innerHTML=== boxes[8].innerHTML) {
+    } else if (boxes[6].innerHTML === boxes[7].innerHTML && boxes[7].innerHTML === boxes[8].innerHTML && boxes[6].innerHTML=== boxes[8].innerHTML && boxes[6].innerHTML !== '' && boxes[7].innerHTML !== '' && boxes[8].innerHTML !== '') {
         boxes[6].classList.add('red')
         boxes[7].classList.add('red')
         boxes[8].classList.add('red')
-    } else if (boxes[0].innerHTML === boxes[3].innerHTML && boxes[3].innerHTML === boxes[6].innerHTML && boxes[0].innerHTML === boxes[6].innerHTML) {
+    } else if (boxes[0].innerHTML === boxes[3].innerHTML && boxes[3].innerHTML === boxes[6].innerHTML && boxes[0].innerHTML === boxes[6].innerHTML && boxes[0].innerHTML !== '' && boxes[3].innerHTML !== '' && boxes[6].innerHTML !== '') {
         boxes[0].classList.add('red')
         boxes[3].classList.add('red')
         boxes[6].classList.add('red')
-    }  else if (boxes[1].innerHTML === boxes[4].innerHTML && boxes[4].innerHTML === boxes[7].innerHTML && boxes[1].innerHTML === boxes[7].innerHTML) {
+    }  else if (boxes[1].innerHTML === boxes[4].innerHTML && boxes[4].innerHTML === boxes[7].innerHTML && boxes[1].innerHTML === boxes[7].innerHTML && boxes[1].innerHTML !== '' && boxes[4].innerHTML !== '' && boxes[7].innerHTML !== '') {
         boxes[1].classList.add('red')
         boxes[4].classList.add('red')
         boxes[7].classList.add('red')
-    } else if (boxes[2].innerHTML === boxes[5].innerHTML && boxes[5].innerHTML === boxes[8].innerHTML && boxes[2].innerHTML === boxes[8].innerHTML) {
+    } else if (boxes[2].innerHTML === boxes[5].innerHTML && boxes[5].innerHTML === boxes[8].innerHTML && boxes[2].innerHTML === boxes[8].innerHTML && boxes[2].innerHTML !== '' && boxes[5].innerHTML !== '' && boxes[8].innerHTML !== '') {
         boxes[2].classList.add('red')
         boxes[5].classList.add('red')
         boxes[8].classList.add('red')
-    } else if (boxes[0].innerHTML === boxes[4].innerHTML && boxes[4].innerHTML === boxes[8].innerHTML && boxes[0].innerHTML === boxes[8].innerHTML) {
+    } else if (boxes[0].innerHTML === boxes[4].innerHTML && boxes[4].innerHTML === boxes[8].innerHTML && boxes[0].innerHTML === boxes[8].innerHTML && boxes[0].innerHTML !== '' && boxes[4].innerHTML !== '' && boxes[8].innerHTML !== '') {
         boxes[0].classList.add('red')
         boxes[4].classList.add('red')
         boxes[8].classList.add('red')
-    } else if (boxes[2].innerHTML === boxes[4].innerHTML && boxes[4].innerHTML === boxes[6].innerHTML && boxes[2].innerHTML === boxes[6].innerHTML) {
+    } else if (boxes[2].innerHTML === boxes[4].innerHTML && boxes[4].innerHTML === boxes[6].innerHTML && boxes[2].innerHTML === boxes[6].innerHTML && boxes[2].innerHTML !== '' && boxes[4].innerHTML !== '' && boxes[6].innerHTML !== '') {
         boxes[2].classList.add('red')
         boxes[4].classList.add('red')
         boxes[6].classList.add('red')
-    } else {
-        document.querySelector('.result').innerHTML = 'НИЧЬЯ! Сыграем еще?'
-    }
+    } 
 } 
